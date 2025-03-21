@@ -15,3 +15,5 @@ function calcularMediaAluno(nota1,nota2,nota3){
     alert(`média ${ (nota1 + nota2 + nota3) /3}`);
 
     alert(resultado);
+
+    //
