@@ -1,0 +1,1 @@
+Esse exercício é diferente do exercício 13 , porque é mais fácil.
