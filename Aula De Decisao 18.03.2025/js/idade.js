@@ -1,37 +1,30 @@
-function calcIdadeEmMeses(dataNascimento) {
-    // Converte a data de nascimento para um objeto Date
-    const nascimento = new Date(dataNascimento);
+function calcularIdade() {
+    // Solicita a data de nascimento ao usuário
+    const dataNascimento = prompt("Digite sua data de nascimento (DD/MM/AAAA):");
+  
+    // Divide a data em dia, mês e ano
+    const partesData = dataNascimento.split("/");
+    const diaNascimento = parseInt(partesData[0]);
+    const mesNascimento = parseInt(partesData[1]) - 1; // Meses em JavaScript começam em 0
+    const anoNascimento = parseInt(partesData[2]);
   
     // Obtém a data atual
-    const hoje = new Date();
+    const dataAtual = new Date();
+    const diaAtual = dataAtual.getDate();
+    const mesAtual = dataAtual.getMonth();
+    const anoAtual = dataAtual.getFullYear();
   
-    // Calcula a diferença em anos
-    let anos = hoje.getFullYear() - nascimento.getFullYear();
+    // Calcula a idade
+    let idade = anoAtual - anoNascimento;
   
-    // Calcula a diferença em meses
-    let meses = hoje.getMonth() - nascimento.getMonth();
-  
-    // Ajusta a idade em meses se o aniversário ainda não ocorreu este ano
-    if (meses < 0 || (meses === 0 && hoje.getDate() < nascimento.getDate())) {
-      anos--;
-      meses += 12;
+    // Verifica se o aniversário já ocorreu este ano
+    if (mesAtual < mesNascimento || (mesAtual === mesNascimento && diaAtual < diaNascimento)) {
+      idade--;
     }
   
-    // Calcula a idade total em meses
-    const idadeEmMeses = anos * 12 + meses;
-  
-    return idadeEmMeses;
+    // Exibe a idade
+    alert("Sua idade é: " + idade + " anos.");
   }
   
-  function exibirIdadeEmMeses() {
-    // Obtém a data de nascimento do campo de entrada
-    const dataNascimento = document.getElementById("iano").value;
-  
-    // Calcula a idade em meses
-    const idadeEmMeses = calcIdadeEmMeses(dataNascimento);
-  
-    // Exibe a idade em meses no elemento com o ID "iidade"
-    document.getElementById("iidade").textContent = idadeEmMeses + " meses";
-  }
-
-
+  // Chama a função para calcular a idade
+  calcularIdade();
